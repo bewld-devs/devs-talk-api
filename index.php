@@ -1,10 +1,8 @@
 <?php
 
+use DevsTalk\Models\User;
+
 require_once './vendor/autoload.php';
 
-use Kreait\Firebase\Factory;
-use Kreait\Firebase\ServiceAccount;
 
-class Users {
-    
-}
+var_dump(User::get(988899));
