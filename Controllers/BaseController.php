@@ -28,7 +28,7 @@ class BaseController {
      * @return array
      */
     protected function getQueryStringParams() {
-        return parse_str($_SERVER['QUERY_STRING'], $query);
+        return isset($_SERVER['QUERY_STRING']) ? parse_str($_SERVER['QUERY_STRING'], $query) : 'limit';
     }
 
     /**
