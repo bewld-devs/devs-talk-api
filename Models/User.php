@@ -2,6 +2,12 @@
 
 namespace DevsTalk\Models;
 
-class User extends Model {
-    
+use DevsTalk\Database\Database;
+
+class User extends Database
+{
+    public function getUsers($limit)
+    {
+        return $this->select("SELECT * FROM users ORDER BY user_id ASC LIMIT ?", ["i", $limit]);
+    }
 }
