@@ -7,13 +7,15 @@ class Database {
 
     public function __construct() {
         try {
-            $this->connection = new \mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_DATABASE_NAME);
+            /* fall back code ie the config is absent
+            return new \PDO("sqlite:" . Config::PATH_TO_SQLITE_FILE);*/
 
-            if (mysqli_connect_errno()) {
-                throw new \Exception("Could not connect to database.");
-            }
-        } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            //Here you return the credentials stored in the config file
+            return new \PDO("sqlite:" .DB_PATH);
+
+        } catch (\PDOException $e) {
+            //if anything happens throw an error
+            echo $e->getMessage(), 'here';
         }
     }
 
