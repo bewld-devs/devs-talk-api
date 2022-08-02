@@ -11,7 +11,7 @@ class Database {
             return new \PDO("sqlite:" . Config::PATH_TO_SQLITE_FILE);*/
 
             //Here you return the credentials stored in the config file
-            return new \PDO("sqlite:" .DB_PATH);
+            $this->connection =  new \PDO("sqlite:" .DB_PATH);
 
         } catch (\PDOException $e) {
             //if anything happens throw an error
@@ -22,17 +22,18 @@ class Database {
     public function select($query = "", $params = []) {
         try {
             $stmt = $this->executeStatement($query, $params);
-            $result = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
-            $stmt->close();
+            $result = $stmt->fetchAll();
 
             return $result;
         } catch (\Exception $e) {
-            throw new \Exception($e->getMessage());
+            echo ($e->getMessage());
         }
         return false;
     }
 
     private function executeStatement($query = "", $params = []) {
+
+        
         try {
             $stmt = $this->connection->prepare($query);
 
@@ -41,7 +42,7 @@ class Database {
             }
 
             if ($params) {
-                $stmt->bind_param($params[0], $params[1]);
+                $stmt->bindParam($params[0], $params[1]);
             }
 
             $stmt->execute();
