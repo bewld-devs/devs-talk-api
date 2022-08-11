@@ -27,4 +27,5 @@ And vhalla! just vist /api/v1/users
   - /api/v1/users/{id} => Gets a specific user in regard to their ID
 
 
+## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
