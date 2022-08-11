@@ -12,6 +12,14 @@
 
  Forn non-php devs, i'd advise you to use [laragon](https://laragon.org/) as it comes pre-bundles with the above requirements
 
+ After ypu have fullfilled all the requiremts mentioned above
+  - clone the repo
+  - open terminal
+  - `cd devs-talk-api`
+  - `composer install`
+
+And vhalla! just vist /api/v1/users 
+
  ### Endpoints
 
  #### For now the only endpoints that work are 
