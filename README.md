@@ -12,7 +12,7 @@
 
  Forn non-php devs, i'd advise you to use [laragon](https://laragon.org/) as it comes pre-bundles with the above requirements
 
- After ypu have fullfilled all the requiremts mentioned above
+ After you have fullfilled all the requiremts mentioned above
   - clone the repo
   - open terminal
   - `cd devs-talk-api`
