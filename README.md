@@ -25,3 +25,6 @@ And vhalla! just vist /api/v1/users
  #### For now the only endpoints that work are 
   - /api/v1/users  => Gets all the users
   - /api/v1/users/{id} => Gets a specific user in regard to their ID
+
+
+  For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
