@@ -2,7 +2,7 @@
 
  namespace DevsTalk\Models;
 
- class User extends Model{
+ class Source extends Model{
 
 
  }

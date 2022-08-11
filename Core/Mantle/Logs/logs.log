@@ -1,0 +1,12 @@
+Thu, 11 Aug 2022 19:18:32 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api</b>, There is no such route! 
+Thu, 11 Aug 2022 19:18:45 - localhost - ::1 - Error: Something is up with your query { select * from users ORDER BY `created_at` DESC; }  SQLSTATE[HY000]: General error: 1 no such table: users
+Thu, 11 Aug 2022 19:18:45 - localhost - ::1 - Debug: Something is up with your query { select * from users ORDER BY `created_at` DESC; }!HY000
+Thu, 11 Aug 2022 19:21:13 - localhost - ::1 - Error: Something is up with your query { select * from users ORDER BY `created_at` DESC; }  SQLSTATE[HY000]: General error: 1 no such column: created_at
+Thu, 11 Aug 2022 19:21:13 - localhost - ::1 - Debug: Something is up with your query { select * from users ORDER BY `created_at` DESC; }!HY000
+Thu, 11 Aug 2022 19:23:57 - localhost - ::1 - Error: Something is up with your query { select * from users ORDER BY `created_at` DESC; }  SQLSTATE[HY000]: General error: 1 no such column: created_at
+Thu, 11 Aug 2022 19:23:57 - localhost - ::1 - Debug: Something is up with your query { select * from users ORDER BY `created_at` DESC; }!HY000
+Thu, 11 Aug 2022 19:26:57 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api/v1/users/1</b>, There is no such route! 
+Thu, 11 Aug 2022 19:33:55 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api/v1/users/1</b>, There is no such route! 
+Thu, 11 Aug 2022 19:35:15 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api/v1/users/1</b>, There is no such route! 
+Thu, 11 Aug 2022 19:35:25 - localhost - ::1 - Error: Something is up with your query { select * from users where `id` = "1" ORDER BY `created_at` DESC; }  SQLSTATE[HY000]: General error: 1 no such column: created_at
+Thu, 11 Aug 2022 19:35:25 - localhost - ::1 - Debug: Something is up with your query { select * from users where `id` = "1" ORDER BY `created_at` DESC; }!HY000

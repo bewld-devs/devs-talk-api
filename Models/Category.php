@@ -2,7 +2,8 @@
 
  namespace DevsTalk\Models;
 
- class User extends Model{
+ class Category extends Model{
+
 
 
  }

@@ -1,22 +1,18 @@
 <?php
 
-use DevsTalk\Controllers\UserController;
+use DevsTalk\Core\Mantle\Router;
+use DevsTalk\Core\Mantle\Request;
 
- 
+//require the main file joining all the parts of the app
+require 'Core/bootstrap.php';
 
-require_once __DIR__.'/bootstrap.php';
- 
+//Try to load the routes, direct the URI and check the request method
+ try {
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = explode( '/', $uri );
+    Router::load('routes.php')->direct(Request::uri(), Request::method());
 
+} catch (\Exception $e) {
 
- 
-if ((isset($uri[2]) && $uri[2] != 'user') || !isset($uri[3])) {
-    header("HTTP/1.1 404 Not Found");
-    exit();
+    //Instead of catching the exception here we redirect the same to our main error handler
+    abort($e->getMessage(), $e->getCode());
 }
- 
-$objFeedController = new UserController();
-$strMethodName = $uri[3] . 'Action'; 
-$objFeedController->{$strMethodName}();
