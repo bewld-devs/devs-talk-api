@@ -23,8 +23,11 @@ And vhalla! just vist /api/v1/users
  ### Endpoints
 
  #### For now the only endpoints that work are 
-  - /api/v1/users  => Gets all the users
-  - /api/v1/users/{id} => Gets a specific user in regard to their ID
+  - GET /api/v1/users  => Gets all the users
+  - GET /api/v1/users/{id} => Gets a specific user in regard to their ID
+  
+  - POST /api/v1/users/create => Create a new user
+  - POST /api/v1/users/signin => authenticate a user
 
 
 ## Issues
