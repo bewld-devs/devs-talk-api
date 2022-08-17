@@ -10,6 +10,7 @@ class Auth {
     public static function login(String $username, String $password) {
 
         $data = [];
+        $password = md5($password);
         $user =  User::query("select id, username, password from users where username = \"$username\"");
 
         if (empty($user)) {
@@ -25,8 +26,6 @@ class Auth {
             Session::make('loggedIn', true);
             Session::make('user_id', $user->id);
             Session::make('user', $user->username);
-            Session::make('email', $user->email);
-            Session::make('role', $user->role);
             //Todo Implement Session tokens  
             $data["status"] = "success";
             $data["message"] = "{$username} has logged in";
