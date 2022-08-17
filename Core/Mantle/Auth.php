@@ -9,11 +9,9 @@ class Auth {
 
     public static function login(String $username, String $password) {
 
-        $password = md5($password);
+      
+        $user =  User::query("select id, first_name, last_name,  from users where first_name = \"$username\"");
 
-        $user =  User::query("select id, username, email, role, password  from users where username = \"$username\"");
-
-        //$user = User::where(['username', 'password'], ['username', $username]);
         if (empty($user)) {
             logger("Info: Login: No account with {$username} username");
             echo json_encode("There is no user with {$username}");
