@@ -52,12 +52,7 @@ class UserController extends Controller {
         return display($data);
     }
 
-    
-    public function edit($id) {
-        $product = User::find($id);
 
-        
-    }
     public function update() {
 
         $id = $this->request()->form('id');
