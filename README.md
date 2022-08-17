@@ -25,10 +25,16 @@ And vhalla! just vist /api/v1/users
  #### For now the only endpoints that work are 
   - GET /api/v1/users  => Gets all the users
   - GET /api/v1/users/{id} => Gets a specific user in regard to their ID
-  
-  - POST /api/v1/users/create => Create a new user
-  - POST /api/v1/users/signin => authenticate a user
 
+  - POST /api/v1/users/create => Create a new user
+  'username': 'admin',
+  'password': '1234',
+  'email': 'test@email.com'
+  - POST /api/v1/users/signin => authenticate a user
+`
+  'username': 'admin',
+  'password': '1234',
+`
 
 ## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
