@@ -10,14 +10,13 @@ class Auth {
     public static function login(String $username, String $password) {
 
         $data = [];
-        $user =  User::query("select id, first_name, last_name  from users where first_name = \"$username\"");
+        $user =  User::query("select id, username, password from users where username = \"$username\"");
 
         if (empty($user)) {
             $data["status"] = "fail";
             logger("Info: Login: No account with {$username} username");
             $data["message"] = "There is no user with {$username}";
-            echo json_encode($data);
-            return;
+            return display($data);
         }
         $user = (object)$user[0];
 
@@ -31,14 +30,12 @@ class Auth {
             //Todo Implement Session tokens  
             $data["status"] = "success";
             $data["message"] = "{$username} has logged in";
-            echo json_encode($data);
-            return;
+            return display($data);
         } else {
             logger("Info: Login: Wrong Credentials");
             $data["status"] = "fail";
             $data["message"] = "Wrong Credentials, Please try again";
-            echo json_encode($data);
-            return;
+            return display($data);
         }
     }
     public static function logout(String $user) {

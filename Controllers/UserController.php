@@ -3,6 +3,7 @@
 namespace DevsTalk\Controllers;
 
 use DevsTalk\Models\User;
+use DevsTalk\Core\Mantle\Request;
 
 class UserController extends Controller {
 
@@ -22,28 +23,33 @@ class UserController extends Controller {
     }
     public function create() {
 
-        $this->middleware('admin');
+        //$this->middleware('admin');
+        $data = [];
         //validate the input
         $this->request()->validate($_POST, [
             'username' => 'required',
             'email' => 'required',
-            'role' => 'required'
+            'password' => 'required'
         ]);
+        if (!empty(Request::$errors)) {
+            $data["status"] = "fail";
+            $data["errors"] = Request::$errors;
+            return display($data);
+        }
         //create user
         User::create([
-            'id' => uniqid('CU-'),
             'username' => $this->request()->form('username'),
             'email' => $this->request()->form('email'),
-            'role' => $this->request()->form('role'),
-            'password' => md5('1234'), //default one
+            'password' => $this->request()->form('password'),
             'created_at' => date('Y-m-d H:i:s', time()),
             'updated_at' => date('Y-m-d H:i:s', time())
         ]);
         //notify    
-        notify("New User added");
+        $data["status"] = "success";
+        $data["message"] = "Successfully created a new user";
 
         //redirect back
-        return redirectback();
+        return display($data);
     }
 
     
@@ -63,7 +69,7 @@ class UserController extends Controller {
 
         $username = $this->request()->form('username');
         $email = $this->request()->form('email');
-        $role = $this->request()->form('role');
+        $role = $this->request()->form('password');
         $updated_at = date('Y-m-d H:i:s', time());
         //create product
         User::update(

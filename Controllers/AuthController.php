@@ -10,17 +10,17 @@ class AuthController extends Controller {
     public function signin() {
 
         $this->request()->validate($_POST, [
-            'first_name' => 'required',
-            'last_name' => 'required'
+            'username' => 'required',
+            'password' => 'required'
         ]);
 
         if (!empty(Request::$errors)) {
-            return display([
-                'errors' => Request::$errors
-            ]);
+            $data["status"] = "fail";
+            $data["errors"] = Request::$errors;
+            return display($data);
         }
 
-        Auth::login($this->request()->form('first_name'), $this->request()->form('last_name'));
+        Auth::login($this->request()->form('username'), $this->request()->form('password'));
     }
 
     public function signout() {
