@@ -1,1 +1,15 @@
 Wed, 17 Aug 2022 22:46:44 - localhost - 127.0.0.1 - Debug: DevsTalk\Controllers\AuthController doesn't not respond to sign Method!
+Wed, 17 Aug 2022 23:03:01 - localhost - 127.0.0.1 - Error: Something is up with your Query -> select id, first_name, last_name,  from users where first_name = "", SQLSTATE[HY000]: General error: 1 near "from": syntax error
+Wed, 17 Aug 2022 23:03:01 - localhost - 127.0.0.1 - Debug: Something is up with your Query!HY000
+Wed, 17 Aug 2022 23:04:01 - localhost - 127.0.0.1 - Error: Something is up with your Query -> select id, first_name, last_name,  from users where first_name = "peter", SQLSTATE[HY000]: General error: 1 near "from": syntax error
+Wed, 17 Aug 2022 23:04:01 - localhost - 127.0.0.1 - Debug: Something is up with your Query!HY000
+Wed, 17 Aug 2022 23:04:39 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:46 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:47 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:48 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:49 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:50 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:51 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:08:52 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:09:32 - localhost - 127.0.0.1 - Info: Login: No account with peter username
+Wed, 17 Aug 2022 23:10:53 - localhost - 127.0.0.1 - Info: Login: No account with peter username

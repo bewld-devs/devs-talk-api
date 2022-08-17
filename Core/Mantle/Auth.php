@@ -2,19 +2,21 @@
 
 namespace DevsTalk\Core\Mantle;
 
-use DevsTalk\Models\User; 
+use DevsTalk\Models\User;
 use DevsTalk\Core\Mantle\Session;
 
 class Auth {
 
     public static function login(String $username, String $password) {
 
-      
-        $user =  User::query("select id, first_name, last_name,  from users where first_name = \"$username\"");
+        $data = [];
+        $user =  User::query("select id, first_name, last_name  from users where first_name = \"$username\"");
 
         if (empty($user)) {
+            $data["status"] = "fail";
             logger("Info: Login: No account with {$username} username");
-            echo json_encode("There is no user with {$username}");
+            $data["message"] = "There is no user with {$username}";
+            echo json_encode($data);
             return;
         }
         $user = (object)$user[0];
@@ -27,12 +29,15 @@ class Auth {
             Session::make('email', $user->email);
             Session::make('role', $user->role);
             //Todo Implement Session tokens  
-           
-            echo json_encode("logged_in"); 
+            $data["status"] = "success";
+            $data["message"] = "{$username} has logged in";
+            echo json_encode($data);
             return;
         } else {
             logger("Info: Login: Wrong Credentials");
-            echo json_encode("Wrong credentials, Please try again!");
+            $data["status"] = "fail";
+            $data["message"] = "Wrong Credentials, Please try again";
+            echo json_encode($data);
             return;
         }
     }

@@ -9,8 +9,6 @@ use DevsTalk\Core\Mantle\Session;
 class AuthController extends Controller {
     public function signin() {
 
-        echo json_encode($_POST);
-
         $this->request()->validate($_POST, [
             'first_name' => 'required',
             'last_name' => 'required'
@@ -22,7 +20,7 @@ class AuthController extends Controller {
             ]);
         }
 
-        Auth::login($this->request()->form('username'), $this->request()->form('password'));
+        Auth::login($this->request()->form('first_name'), $this->request()->form('last_name'));
     }
 
     public function signout() {
