@@ -19,7 +19,7 @@
   - `composer install`
   - Run your server or built in `php -S localhost:8080`
 
-And vhalla! just visit /api/v1/users 
+And vhalla! just visit `/` or any of the listed endpoints 
 
 ## Current GET Endpoints
 
@@ -66,6 +66,19 @@ For the POST end point to work, the following is needed
 | Field Name | Type     | Description                                                                                              |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
 | `id`       | `string` | The id of the user to be deleted                                                           |
+## Database
 
+For now because we are in the intial stages of dev, i am using a sqlite db with has only table for now that is users, below is its schema
+
+``
+CREATE TABLE `users` (
+  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
+  `username` varchar(255),
+  `email` varchar(255),
+  `password` varchar(255),
+  `created_at` datetime,
+  `updated_at` datetime
+);
+``
 ## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
