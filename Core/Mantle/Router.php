@@ -39,7 +39,7 @@ class Router {
             exit;
         }
         */
-      
+
         $params = [];
         $regexUri = '';
         //  dd($this->routes[$requestType]);
@@ -54,7 +54,10 @@ class Router {
                 break;
             }
         }
-
+        if (empty($this->routes[$requestType][$regexUri])) {
+            throw new \Exception("Oops, you forgot to include /{$uri}, There is no such endpoint! ", 404);
+            exit;
+        }
         if (is_callable($this->routes[$requestType][$regexUri])) {
             $this->routes[$requestType][$regexUri](...$params);
         } else {
@@ -65,16 +68,14 @@ class Router {
                     ...explode('@', $this->routes[$requestType][$regexUri])
                 );
             } elseif (!array_key_exists($uri, $this->routes[$requestType])) {
-                throw new \Exception("Oops, you forgot to include <b>/{$uri}</b>, There is no such route! ", 404);
+                throw new \Exception("Oops, you forgot to include /{$uri}, There is no such endpoint! ", 404);
                 exit;
-                
             } else {
                 return $this->callAction(
                     $params,
                     ...explode('@', $this->routes[$requestType][$uri])
-                ); 
+                );
             }
-            
         }
     }
     protected function callAction($params, $controller, $action) {
@@ -82,7 +83,7 @@ class Router {
         $controller = "DevsTalk\\Controllers\\{$controller}";
 
         if (!class_exists($controller)) {
-            throw new \Exception("Class <b>$controller</b> doesn't not exist!", 500);
+            throw new \Exception("Class $controller doesn't not exist!", 500);
         }
 
         $controller = new $controller;
