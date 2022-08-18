@@ -17,30 +17,26 @@ class Auth {
             $data["status"] = "fail";
             logger("Info: Login: No account with {$username} username");
             $data["message"] = "There is no user with {$username}";
-            return display($data);
+            return display(400, $data);
         }
         $user = (object)$user[0];
 
         if ($password === $user->password) {
             logger("Info: Login: Logged in {$username}");
-            Session::make('loggedIn', true);
-            Session::make('user_id', $user->id);
-            Session::make('user', $user->username);
+        
             //Todo Implement Session tokens  
             $data["status"] = "success";
             $data["message"] = "{$username} has logged in";
-            return display($data);
+            return display(200, $data);
         } else {
             logger("Info: Login: Wrong Credentials");
             $data["status"] = "fail";
             $data["message"] = "Wrong Credentials, Please try again";
-            return display($data);
+            return display(400, $data);
         }
     }
     public static function logout(String $user) {
-        logger("Info: Login: logged out $user");
-        Session::unset($user);
-        Session::make('loggedIn', false);
-        Session::destroy();
+     //To Do
+     
     }
 }
