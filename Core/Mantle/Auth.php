@@ -3,7 +3,6 @@
 namespace DevsTalk\Core\Mantle;
 
 use DevsTalk\Models\User;
-use DevsTalk\Core\Mantle\Session;
 
 class Auth {
 
