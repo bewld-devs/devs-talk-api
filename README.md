@@ -25,20 +25,35 @@ And vhalla! just visit /api/v1/users
 
 | API                         | Description                                                                        |
 |-----------------------------|------------------------------------------------------------------------------------|
-| `GET /api/v1/users` | Returns all the users available.            |
-| `GET /api/v1/users/{id}`         | Returns a specific user in regard to their ID.                     |
+| `GET /` | Returns a welcome message & confirms that everything is working  |
+| `GET /api/v1` | Returns a welcome message & confirms that everything is working  |
+| `GET /api/v1/users` | Returns all the users available.  |
+| `GET /api/v1/users/{id}`         | Returns a specific user in regard to their ID.|
 
 ## Current POST Endpoints
 
 | API                         | Description                                                                        |
 |-----------------------------|------------------------------------------------------------------------------------|
-| `POST /api/v1/user/create` | Create a new user, returns an object.            |
 | `POST /api/v1/user/signin`         | Authenticates a user                     |
+| `POST /api/v1/user/create` | Create a new user, returns an object.            |
+| `POST /api/v1/user/delete` | Delete a user, returns an object.            |
+
 
 The data returned from these APIs is a JSON array of JSON objects.
 For the POST end point to work, the following is needed
 
-#### POST Endpoint #1 `/create`
+
+
+#### POST Endpoint #1 `/signin`
+
+| Field Name | Type     | Description                                                                                              |
+|------------|----------|----------------------------------------------------------------------------------------------------------|
+| `username`       | `string` | The name of the  user to be autheticated                                                           |
+| `password`     | `string` | The password to be associated with the new user. |
+
+
+
+#### POST Endpoint #2 `/create`
 
 | Field Name | Type     | Description                                                                                              |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
@@ -46,11 +61,11 @@ For the POST end point to work, the following is needed
 | `password`     | `string` | The password to be associated with the new user.                                                  |
 | `email`    | `string` | The email to be associated with the new user. |
 
-#### POST Endpoint #1 `/signin`
+#### POST Endpoint #3 `/delete`
 
 | Field Name | Type     | Description                                                                                              |
 |------------|----------|----------------------------------------------------------------------------------------------------------|
-| `username`       | `string` | The name of the  user to be autheticated                                                           |
-| `password`     | `string` | The password to be associated with the new user. 
+| `id`       | `string` | The id of the user to be deleted                                                           |
+
 ## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
