@@ -8,7 +8,7 @@ use DevsTalk\Core\Mantle\Request;
 class UserController extends Controller {
 
     public function __construct() {
-       // $this->middleware('auth');
+        // $this->middleware('auth');
     }
 
     public function index() {
@@ -18,7 +18,7 @@ class UserController extends Controller {
 
     public function show($id) {
         $user = (array)User::find($id);
-        if(empty($user)){
+        if (empty($user)) {
             return display(404, [
                 "message" => "No user with the id of '{$id}' was found"
             ]);
@@ -28,7 +28,7 @@ class UserController extends Controller {
     }
     public function create() {
 
-    
+
         $data = [];
         //validate the input
         $this->request()->validate($_POST, [
@@ -63,7 +63,7 @@ class UserController extends Controller {
         $id = $this->request()->form('id');
         //validate the input
         $this->request()->validate($_POST, [
-            'username' => 'required'
+            'id' => 'required'
         ]);
         if (!empty(Request::$errors)) {
             $data["status"] = "fail";
@@ -87,7 +87,7 @@ class UserController extends Controller {
             $id
         );
 
-        
+
         return display(200, [
             "message" => "User {$id} has been updated"
         ]);
@@ -95,11 +95,25 @@ class UserController extends Controller {
     public function delete() {
         $id = $this->request()->form('id');
 
-        User::delete('id', $id);
+        //validate the input
+        $this->request()->validate($_POST, [
+            'id' => 'required'
+        ]);
+
+        if (!empty(Request::$errors)) {
+            $data["status"] = "fail";
+            $data["errors"] = Request::$errors;
+            return display(400, $data);
+        }
+
+        if(!User::delete('id', $id)){
+            $data["status"] = "fail";
+            $data["errors"] = "Something has happened & coould not delete user";
+            return display(500, $data);  
+        }
 
         return display(200, [
             "message" => "User {$id} has been deleted"
         ]);
-  
     }
 }

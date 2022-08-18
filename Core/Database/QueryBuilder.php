@@ -40,7 +40,7 @@ class QueryBuilder {
 
     if (is_null($results) || empty($results)) {
       logger("Info: Empty results for your query {$sql}");
-      //   throw new \Exception("There is no results for your query!", 404);
+      return false;
     }
     return  $results;
   }
