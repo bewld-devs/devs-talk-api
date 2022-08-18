@@ -32,8 +32,8 @@ And vhalla! just visit /api/v1/users
 
 | API                         | Description                                                                        |
 |-----------------------------|------------------------------------------------------------------------------------|
-| `POST /api/v1/users/create` | Create a new user, returns an object.            |
-| `POST /api/v1/users/signin`         | Authenticates a user                     |
+| `POST /api/v1/user/create` | Create a new user, returns an object.            |
+| `POST /api/v1/user/signin`         | Authenticates a user                     |
 
 The data returned from these APIs is a JSON array of JSON objects.
 For the POST end point to work, the following is needed
