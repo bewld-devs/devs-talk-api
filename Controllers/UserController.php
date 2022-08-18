@@ -13,17 +13,22 @@ class UserController extends Controller {
 
     public function index() {
         $users =  User::all();
-        return display($users);
+        return display(302, $users);
     }
 
     public function show($id) {
-        $user = User::find($id);
+        $user = (array)User::find($id);
+        if(empty($user)){
+            return display(404, [
+                "message" => "No user with the id of '{$id}' was found"
+            ]);
+        }
 
-        return display((array)$user);
+        return display(302, $user);
     }
     public function create() {
 
-        //$this->middleware('admin');
+    
         $data = [];
         //validate the input
         $this->request()->validate($_POST, [
@@ -34,7 +39,7 @@ class UserController extends Controller {
         if (!empty(Request::$errors)) {
             $data["status"] = "fail";
             $data["errors"] = Request::$errors;
-            return display($data);
+            return display(400, $data);
         }
         //create user
         User::create([
@@ -49,7 +54,7 @@ class UserController extends Controller {
         $data["message"] = "Successfully created a new user";
 
         //redirect back
-        return display($data);
+        return display(200, $data);
     }
 
 
@@ -60,7 +65,11 @@ class UserController extends Controller {
         $this->request()->validate($_POST, [
             'username' => 'required'
         ]);
-
+        if (!empty(Request::$errors)) {
+            $data["status"] = "fail";
+            $data["errors"] = Request::$errors;
+            return display(400, $data);
+        }
 
         $username = $this->request()->form('username');
         $email = $this->request()->form('email');
@@ -78,17 +87,19 @@ class UserController extends Controller {
             $id
         );
 
-        notify("User {$id} has been updated");
-
-        //redirect back
-        return redirectback();
+        
+        return display(200, [
+            "message" => "User {$id} has been updated"
+        ]);
     }
     public function delete() {
         $id = $this->request()->form('id');
 
         User::delete('id', $id);
 
-        notify(" User {$id} has been deleted");
-        return redirectback();
+        return display(200, [
+            "message" => "User {$id} has been deleted"
+        ]);
+  
     }
 }
