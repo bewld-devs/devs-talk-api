@@ -1,0 +1,9 @@
+Thu, 18 Aug 2022 20:13:32 - localhost - ::1 - Debug: Oops, you forgot to include <b>/favicon.ico</b>, There is no such route! 
+Thu, 18 Aug 2022 20:13:39 - localhost - ::1 - Info: Empty results for your query select * from users where `id` = "update";
+Thu, 18 Aug 2022 20:13:39 - localhost - ::1 - Debug: There is no results for your query!
+Thu, 18 Aug 2022 20:14:41 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api/v1/user/update</b>, There is no such route! 
+Thu, 18 Aug 2022 20:16:10 - localhost - ::1 - Debug: Oops, you forgot to include <b>/api/v1/user/update</b>, There is no such endpoint! 
+Thu, 18 Aug 2022 20:16:45 - localhost - ::1 - Debug: Oops, you forgot to include /api/v1/user/update, There is no such endpoint! 
+Thu, 18 Aug 2022 20:19:40 - localhost - ::1 - Info: Empty results for your query select * from users where `id` = "update";
+Thu, 18 Aug 2022 20:19:40 - localhost - ::1 - Debug: There is no results for your query!
+Thu, 18 Aug 2022 20:19:47 - localhost - ::1 - Debug: Oops, you forgot to include /api/v1/user/update, There is no such endpoint! 

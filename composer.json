@@ -1,0 +1,16 @@
+{
+    "name": "devstalk/devstalk",
+    "description": "A simple Api for DevsTalk",
+    "authors": [
+        {
+            "name": "munenepeter",
+            "email": "peternjega7@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "DevsTalk\\": "./"
+        }
+    }
+}
