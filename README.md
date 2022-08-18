@@ -29,6 +29,8 @@ And vhalla! just visit `/` or any of the listed endpoints
 | `GET /api/v1` | Returns a welcome message & confirms that everything is working  |
 | `GET /api/v1/users` | Returns all the users available.  |
 | `GET /api/v1/users/{id}`         | Returns a specific user in regard to their ID.|
+| `GET /api/v1/posts` | Returns all the posts available.  |
+| `GET /api/v1/posts/{id}`         | Returns a specific post in regard to its ID.|
 
 ## Current POST Endpoints
 
@@ -68,17 +70,8 @@ For the POST end point to work, the following is needed
 | `id`       | `string` | The id of the user to be deleted                                                           |
 ## Database
 
-For now because we are in the intial stages of dev, i am using a sqlite db with has only table for now that is users, below is its schema
+For now because we are in the intial stages of dev, i am using a sqlite db with has only table for now that is users & posts
 
-``
-CREATE TABLE `users` (
-  `id` INTEGER PRIMARY KEY AUTOINCREMENT,
-  `username` varchar(255),
-  `email` varchar(255),
-  `password` varchar(255),
-  `created_at` datetime,
-  `updated_at` datetime
-);
-``
+
 ## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
