@@ -1,7 +1,7 @@
 # DevTalk API
 
 
-## Still in dev (Will reformat) promise ;)
+## Still in dev (Will reformat) very soon promise ;)
 
 
 ### To run you need 
@@ -10,33 +10,47 @@
  - Enable sqlite extension in php.ini
  - A web server, any will do or just use the built-in in php
 
- Forn non-php devs, i'd advise you to use [laragon](https://laragon.org/) as it comes pre-bundles with the above requirements
+ For non-php devs, i'd advise you to use [laragon](https://laragon.org/) as it comes pre-bundled with the above requirements
 
  After you have fullfilled all the requiremts mentioned above
   - clone the repo
   - open terminal
   - `cd devs-talk-api`
   - `composer install`
+  - Run your server or built in `php -S localhost:8080`
 
-And vhalla! just vist /api/v1/users 
+And vhalla! just visit /api/v1/users 
 
- ### Endpoints
+## Current GET Endpoints
 
- #### For now the only endpoints that work are 
-  - GET /api/v1/users  => Gets all the users
-  - GET /api/v1/users/{id} => Gets a specific user in regard to their ID
+| API                         | Description                                                                        |
+|-----------------------------|------------------------------------------------------------------------------------|
+| `GET /api/v1/users` | Returns all the users available.            |
+| `GET /api/v1/users/{id}`         | Returns a specific user in regard to their ID.                     |
 
-  - POST /api/v1/users/create => Create a new user
-  `
-  'username': 'admin',
-  'password': '1234',
-  'email': 'test@email.com'
-  `
-  - POST /api/v1/users/signin => authenticate a user
-`
-  'username': 'admin',
-  'password': '1234',
-`
+## Current POST Endpoints
 
+| API                         | Description                                                                        |
+|-----------------------------|------------------------------------------------------------------------------------|
+| `POST /api/v1/users/create` | Create a new user, returns an object.            |
+| `POST /api/v1/users/signin`         | Authenticates a user                     |
+
+The data returned from these APIs is a JSON array of JSON objects.
+For the POST end point to work, the following is needed
+
+#### POST Endpoint #1 `/create`
+
+| Field Name | Type     | Description                                                                                              |
+|------------|----------|----------------------------------------------------------------------------------------------------------|
+| `username`       | `string` | The name of the new user to be created                                                           |
+| `password`     | `string` | The password to be associated with the new user.                                                  |
+| `email`    | `string` | The email to be associated with the new user. |
+
+#### POST Endpoint #1 `/signin`
+
+| Field Name | Type     | Description                                                                                              |
+|------------|----------|----------------------------------------------------------------------------------------------------------|
+| `username`       | `string` | The name of the  user to be autheticated                                                           |
+| `password`     | `string` | The password to be associated with the new user. 
 ## Issues
   For any issues, please feel free to ask [@munenepeter](https://github.com/munenepeter)
