@@ -4,7 +4,6 @@ namespace DevsTalk\Controllers;
 
 use DevsTalk\Core\Mantle\Auth;
 use DevsTalk\Core\Mantle\Request;
-use DevsTalk\Core\Mantle\Session;
 
 class AuthController extends Controller {
     public function signin() {

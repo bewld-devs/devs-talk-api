@@ -12,19 +12,24 @@ class PostController extends Controller {
     }
 
     public function index() {
-        $Posts =  Post::all();
-        return display(302, $Posts);
+
+        $posts = array_map(function ($posts) {
+            $posts->username = $this->owner($posts->user_id);
+            return $posts;
+        }, Post::all());
+
+        return display(302, $posts);
     }
 
     public function show($id) {
-        $Post = (array)Post::find($id);
-        if (empty($Post)) {
+        $post = (array)Post::find($id);
+        if (empty($post)) {
             return display(404, [
                 "message" => "No Post with the id of '{$id}' was found"
             ]);
         }
 
-        return display(302, $Post);
+        return display(302, $post);
     }
     public function create() {
 
