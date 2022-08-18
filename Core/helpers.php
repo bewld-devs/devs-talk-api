@@ -2,62 +2,16 @@
 
 
 use DevsTalk\Core\Mantle\App;
-use DevsTalk\Core\Mantle\Auth;
 use DevsTalk\Core\Mantle\Logger;
-use DevsTalk\Core\Mantle\Request;
-use DevsTalk\Core\Mantle\Session;
 
 
-/**
- * checkCreateView
- * 
- * Create a view for route if it does not exist
- * 
- * @param String $view view to be created
- * 
- * @return Void
- */
-function checkView(string $filename) {
-    if (!file_exists($filename)) {
-
-        if (ENV === 'production') {
-            throw new \Exception("The requested view is missing", 404);
-            exit;
-        }
-        fopen("$filename", 'a');
-
-        $data = "<?php include_once 'base.view.php';?><div class=\"grid place-items-center h-screen\">
-       Created {$filename}'s view; please edit</div>";
-
-        file_put_contents($filename, $data);
-    }
-}
-
-/**
- * View
- * 
- * Loads a specified file along with its data
- * 
- * @param String $filename Page to displayed
- * @param Array $data Data to be passed along
- * 
- * @return Require view
- */
-function display(array $data = []) {
+function display(int $code, array $data = []) {
+    http_response_code($code);
     echo json_encode($data);
     return;
 }
 
-/**
- * Redirect
- * 
- * Redirects to a give page
- * 
- * @param String $path Page to be redirected to
- */
-function redirect(string $path) {
-    header("location:{$path}");
-}
+
 /**
  * Abort
  * 
@@ -82,75 +36,18 @@ function abort($message, $code) {
         http_response_code($code);
     }
     logger("Debug: {$message}");
-    display([
-        'code' => $code,
+    display($code, [
         'message' => $message
     ]);
     exit;
 }
 
-function redirectback($data = []) {
-    extract($data);
-    if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] !== '') {
-        redirect($_SERVER['HTTP_REFERER']);
-    }
-    redirect('/');
-}
 
 
-function slug($string) {
-    return strtolower(trim(preg_replace('/[^A-Za-z0-9-]+/', '-', $string)));
-}
 
 
-function isAdmin() {
-    if (auth() && auth()->role === 'admin') {
-        return true;
-    }
-    return false;
-}
-/**
- * Auth Helper
- * 
- * Returns the status of login & an object helper
- * 
- * @return Bool|Object Session
- */
-function auth() {
 
-    if (Session::get('loggedIn') === NULL || Session::get('loggedIn') === false) {
-        return false;
-    }
 
-    Session::get('loggedIn');
-    $class = new class {
-
-        public $username;
-        public $email;
-        public $role;
-        public $id;
-
-        public function __construct() {
-
-            $this->username = Session::get('user');
-            $this->email = Session::get('email');
-            $this->id = Session::get('user_id');
-            $this->role = Session::get('role');
-        }
-        public function __get($name) {
-            return $name;
-        }
-        public function __set($name, $value) {
-            $this->$name = $value;
-        }
-        public function logout($user) {
-            Auth::logout($user);
-            redirect('/');
-        }
-    };
-
-    return $class;
-}
 /**
  * plural
  * This returns the plural version of common english words
@@ -186,123 +83,14 @@ function delete_file(String $path) {
         logger("$path has been deleted");
     }
 }
-/**
- * dd
- * 
- * dump the results & die
- * 
- * @param Mixed $data view to be created
- * 
- * @return String
- */
 
-function dd($var) {
-    //to do
-    // debug_print_backtrace();
 
-    ini_set("highlight.keyword", "#a50000;  font-weight: bolder");
-    ini_set("highlight.string", "#5825b6; font-weight: lighter; ");
-
-    ob_start();
-    highlight_string("<?php\n" . var_export($var, true) . "?>");
-    $highlighted_output = ob_get_clean();
-
-    $highlighted_output = str_replace(["&lt;?php", "?&gt;"], '', $highlighted_output);
-
-    echo $highlighted_output;
-    die();
-}
-/**
- * url helper
- * 
- * @return String url in relation to where it is called
- * 
- * from https://stackoverflow.com/questions/2820723/how-do-i-get-the-base-url-with-php
- */
-function url() {
-    return sprintf(
-        "%s://%s:%s%s",
-        isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off' ? 'https' : 'http',
-        $_SERVER['SERVER_NAME'],
-        $_SERVER['SERVER_PORT'],
-        $_SERVER['REQUEST_URI']
-    );
-}
-
-function notify($message) {
-    echo '<script type="text/javascript">',
-    "notify('$message');",
-    '</script>';
-}
-function format_date($date) {
-    return date("jS M Y ", strtotime($date));
-}
-
-function time_ago($datetime, $full = false) {
-    $now = new \DateTime;
-    $ago = new \DateTime($datetime);
-    $diff = $now->diff($ago);
-
-    $diff->w = floor($diff->d / 7);
-    $diff->d -= $diff->w * 7;
-
-    $string = array(
-        'y' => 'year',
-        'm' => 'month',
-        'w' => 'week',
-        'd' => 'day',
-        'h' => 'hour',
-        'i' => 'minute',
-        's' => 'second',
-    );
-    foreach ($string as $k => &$v) {
-        if ($diff->$k) {
-            $v = $diff->$k . ' ' . $v . ($diff->$k > 1 ? 's' : '');
-        } else {
-            unset($string[$k]);
-        }
-    }
-
-    if (!$full) $string = array_slice($string, 0, 1);
-    return $string ? implode(', ', $string) . ' ago' : 'just now';
-}
-/**
- * asset helper
- * 
- * @param $dir director to be returned in respect to the static dir
- * 
- * @return String Path to the requested resource
- */
-function asset($dir) {
-    // echo url();
-    $root_url = substr(url(), 0, strpos(url(), $_SERVER['REQUEST_URI']));
-
-    echo  $root_url . "/static/$dir";
-}
 
 function logger($message) {
     Logger::log($message);
 }
 
-function get_notifications() {
-    if (empty(Session::get("notifications"))) {
-        return [];
-    }
-    return Session::get("notifications");
-}
-function delete_notifications() {
-    return Session::unset("notifications");
-}
-function session_get($value) {
-    return Session::get($value);
-}
 
-function get_errors() {
-    if (empty(Request::$errors)) {
-        return [];
-    }
-    return Request::$errors;
-}
 
 function is_dev() {
     if (ENV === 'development') {
