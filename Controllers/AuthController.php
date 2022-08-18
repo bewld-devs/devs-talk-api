@@ -17,14 +17,13 @@ class AuthController extends Controller {
         if (!empty(Request::$errors)) {
             $data["status"] = "fail";
             $data["errors"] = Request::$errors;
-            return display($data);
+            return display(400, $data);
         }
 
         Auth::login($this->request()->form('username'), $this->request()->form('password'));
     }
 
     public function signout() {
-        Auth::logout(Session::get('user'));
-        redirect('/');
+       //TO DO
     }
 }
