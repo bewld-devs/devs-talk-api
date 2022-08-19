@@ -23,7 +23,7 @@ And vhalla! just visit `/` or any of the listed endpoints
 
 ## Current GET Endpoints
 
-| API                         | Description                                                                        |
+| API                         | Description                 |
 |-----------------------------|------------------------------------------------------------------------------------|
 | `GET /`                 | Returns a welcome message & confirms that everything is working   |
 | `GET /api/v1`           | Returns a welcome message & confirms that everything is working   |
