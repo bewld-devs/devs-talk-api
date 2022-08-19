@@ -116,6 +116,25 @@ class Model {
     public function belongsTo($class) {
         // I have no idea to implement relations
         //return a join 
+
+        /*
+
+
+        Post belongs to a user, that is user has many posts
+
+        when query a user, we can query his posts too
+
+        $user = User::all();
+
+         $posts = array_map(function ($posts) {
+            $posts->author = User::find($posts->user_id);
+            return $posts;
+        }, Post::all());
+
+
+
+
+        */
         $table1 = static::tableName();
         $table2 = substr($class, strrpos($class, '\\') + 1);
         $table2 = plural(strtolower($table2), 2);

@@ -2,6 +2,7 @@
 
 namespace DevsTalk\Controllers;
 
+use DevsTalk\Models\User;
 use DevsTalk\Models\Post;
 use DevsTalk\Core\Mantle\Request;
 
@@ -14,9 +15,14 @@ class PostController extends Controller {
     public function index() {
 
         $posts = array_map(function ($posts) {
-            $posts->username = $this->owner($posts->user_id);
+            $posts->author = User::find($posts->user_id);
             return $posts;
         }, Post::all());
+
+        // $posts = array_map(function ($posts) {
+        //     $posts->username = $this->owner($posts->user_id);
+        //     return $posts;
+        // }, Post::all());
 
         return display(302, $posts);
     }

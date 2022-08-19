@@ -159,3 +159,4 @@ Thu, 18 Aug 2022 22:00:25 - localhost - ::1 - Info: Empty results for your query
 Thu, 18 Aug 2022 22:00:25 - localhost - ::1 - Info: Empty results for your query select username  from users where id = "category_id"
 Thu, 18 Aug 2022 22:00:25 - localhost - ::1 - Info: Empty results for your query select username  from users where id = "category_id"
 Thu, 18 Aug 2022 22:00:25 - localhost - ::1 - Info: Empty results for your query select username  from users where id = "category_id"
+Fri, 19 Aug 2022 13:33:03 - localhost - ::1 - Debug: Oops, you forgot to include /favicon.ico, There is no such endpoint! 
