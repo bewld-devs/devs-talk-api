@@ -54,7 +54,7 @@ class QueryBuilder {
    */
   public function selectAll(String $table) {
 
-    $sql = "select * from {$table};";
+    $sql = "select * from {$table} ORDER BY `created_at` DESC;";
 
     return $this->runQuery($sql, $table);
   }
@@ -70,14 +70,14 @@ class QueryBuilder {
   public function select(string $table, array $values) {
 
     $values =  implode(',', $values);
-    $sql = "select {$values}  from {$table}";
+    $sql = "select {$values}  from {$table} ORDER BY `created_at` DESC;";
     return $this->runQuery($sql, $table);
   }
 
   public function selectAllWhereID(string $table, $value) {
 
     //To do Implement Dynamic Primary key row
-    $sql = "select * from {$table} where `id` = \"$value\";";
+    $sql = "select * from {$table} where `id` = \"$value\" ORDER BY `created_at` DESC;";
 
     return $this->runQuery($sql, $table);
   }
