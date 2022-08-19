@@ -4,3 +4,4 @@ composer.phar
 /vendor/
 /.git/
 /Core/Mantle/Logs/logs.logs
+/Core/Mantle/Logs
