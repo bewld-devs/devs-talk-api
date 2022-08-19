@@ -29,7 +29,7 @@ And vhalla! just visit `/` or any of the listed endpoints
 | `GET /api/v1` | Returns a welcome message & confirms that everything is working  |
 | `GET /api/v1/users` | Returns all the users available.  |
 | `GET /api/v1/users/{id}`         | Returns a specific user in regard to their ID.|
-| `GET /api/v1/posts` | Returns all the posts available.  |
+| `GET /api/v1/posts` | Returns all the posts available & their associated author.  |
 | `GET /api/v1/posts/{id}`         | Returns a specific post in regard to its ID.|
 
 ## Current POST Endpoints
