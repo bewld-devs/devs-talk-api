@@ -35,7 +35,7 @@ function abort($message, $code) {
 
 
 /**
- * View for view purposes only
+ * View for test purposes only
  * 
  * Loads a specified file along with its data
  * 
