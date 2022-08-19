@@ -1,4 +1,7 @@
+
 <?php
+
+header('Access-Control-Allow-Origin: *');
 
 use DevsTalk\Core\Mantle\Router;
 use DevsTalk\Core\Mantle\Request;
