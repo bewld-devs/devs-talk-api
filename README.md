@@ -22,7 +22,8 @@
 And vhalla! just visit `/` or any of the listed endpoints 
 
 ## Special Endpoints
-
+| API                         | Description                 |
+|-----------------------------|------------------------------------------------------------------------------------|
 | `GET /api/test` | Returns a demo web page that partialy consumes the API |
 
 ## Current GET Endpoints
