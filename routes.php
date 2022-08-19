@@ -15,3 +15,9 @@ $router->post('api/v1/user/delete', 'UserController@delete');
 //posts
 $router->get('api/v1/posts', 'PostController@index');
 $router->get('api/v1/posts/{id}', 'PostController@show');
+
+//test page
+
+$router->get('api/test', function(){
+    return view('test');
+});

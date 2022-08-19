@@ -12,16 +12,7 @@ function display(int $code, array $data = []) {
 }
 
 
-/**
- * Abort
- * 
- * Kills the execution of the script & diplays error page
- * 
- * @param String $message The exception/error msg
- * @param Int $code Status code passed with the exception
- * 
- * @return File view
- */
+
 function abort($message, $code) {
 
     if ($code === 0) {
@@ -43,7 +34,21 @@ function abort($message, $code) {
 }
 
 
+/**
+ * View for view purposes only
+ * 
+ * Loads a specified file along with its data
+ * 
+ * @param String $filename Page to displayed
+ * @param Array $data Data to be passed along
+ * 
+ * @return Require view
+ */
+function view(string $filename, array $data = []) {
+    extract($data);
 
+    return require "views/{$filename}.view.php";
+}
 
 
 
