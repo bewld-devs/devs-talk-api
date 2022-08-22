@@ -28,6 +28,7 @@ function abort($message, $code) {
     }
     logger("Debug: {$message}");
     display($code, [
+        'status' => 'fail',
         'message' => 'Error:' . $message
     ]);
     exit;
