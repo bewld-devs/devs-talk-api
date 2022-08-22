@@ -22,7 +22,7 @@ class Connection {
             }
         } catch (\PDOException $e) {
             //if anything happens throw an error
-            abort($e->getMessage(), (int)$e->getCode());
+            abort("Couldn't Connect to DB:" . $e->getMessage(), (int)$e->getCode());
         }
     }
 }
