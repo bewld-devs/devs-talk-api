@@ -1,7 +1,11 @@
 #!/bin/env php    
 <?php
-require_once __DIR__ . '/vendor/autoload.php';
+
+use DevsTalk\Core\Database\Migrations\Users;
+
+require_once __DIR__ . '/Core/bootstrap.php';
 
 
+(new Users);
 
 ?>
