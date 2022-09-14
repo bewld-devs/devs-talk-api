@@ -1,4 +1,4 @@
-#!/bin/env php    
+#!/bin/env php
 <?php
 
 use DevsTalk\Core\Database\Migrations\Users;
@@ -6,6 +6,6 @@ use DevsTalk\Core\Database\Migrations\Users;
 require_once __DIR__ . '/Core/bootstrap.php';
 
 
-(new Users);
+(new Users)->down();
 
 ?>
