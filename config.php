@@ -14,7 +14,7 @@ return [
   ],
   //when using SQLITE
   'sqlite' => [
-    'path' => 'Core/Database/sqlite/devs_talk.sqlite'
+    'path' => __DIR__.'/Core/Database/sqlite/devs_talk.sqlite'
   ],
   'codes' => [
     403 => ['403 Forbidden', 'The server refused to fulfill the request.'],
