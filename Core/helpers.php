@@ -26,7 +26,7 @@ function abort($message, $code) {
     } else {
         http_response_code($code);
     }
-    logger("Debug: {$message}");
+    logger("Debug",$message);
     display($code, [
         'status' => 'fail',
         'message' => 'Error:' . $message
@@ -84,16 +84,18 @@ function plural($phrase, $value) {
  */
 function delete_file(String $path) {
     if (!unlink($path)) {
-        logger("$path cannot be deleted due to an error");
+        logger("Error", "File cannot be deleted due to an error");
+        return false;
     } else {
-        logger("$path has been deleted");
+        logger("Info", "A File has been deleted");
+        return true;
     }
 }
 
 
 
-function logger($message) {
-    Logger::log($message);
+function logger($level, $message) {
+    Logger::log($level, $message);
 }
 
 

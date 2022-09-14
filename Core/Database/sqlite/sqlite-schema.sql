@@ -7,6 +7,7 @@ create table users (
   `password` VARCHAR(50),
   `position` VARCHAR(50),
   `address` VARCHAR(50),
+  `about` TEXT,
   `created_at` datetime,
   `updated_at` datetime,
   `avatar` VARCHAR(50)

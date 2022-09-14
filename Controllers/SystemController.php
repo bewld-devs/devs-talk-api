@@ -1,6 +1,6 @@
 <?php
 
-namespace Chungu\Controllers;
+namespace DevsTalk\Controllers;
 
 class SystemController extends Controller {
     public function __construct() {
