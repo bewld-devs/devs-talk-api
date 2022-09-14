@@ -17,7 +17,7 @@ class UserController extends Controller {
     }
 
     public function show($id) {
-        $user = (array)User::find($id);
+        $user = User::find($id);
         if (empty($user)) {
             return display(404, [
                 "message" => "No user with the id of '{$id}' was found"
@@ -75,17 +75,7 @@ class UserController extends Controller {
         $email = $this->request()->form('email');
         $role = $this->request()->form('password');
         $updated_at = date('Y-m-d H:i:s', time());
-        //create product
-        User::update(
-            "
-            `username` = '$username',
-            `email` = '$email', 
-            `role` = '$role',  
-            `updated_at` = '$updated_at' 
-            ",
-            'id',
-            $id
-        );
+  
 
 
         return display(200, [
@@ -106,10 +96,10 @@ class UserController extends Controller {
             return display(400, $data);
         }
 
-        if(!User::delete('id', $id)){
+        if (!User::delete('id', $id)) {
             $data["status"] = "fail";
             $data["errors"] = "Something has happened & coould not delete user";
-            return display(500, $data);  
+            return display(500, $data);
         }
 
         return display(200, [

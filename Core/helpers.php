@@ -5,7 +5,7 @@ use DevsTalk\Core\Mantle\App;
 use DevsTalk\Core\Mantle\Logger;
 
 
-function display(int $code, array $data = []) {
+function display(int $code, $data = []) {
     http_response_code($code);
     echo json_encode($data);
     return;

@@ -1,8 +1,6 @@
 <?php
 
- namespace DevsTalk\Models;
+namespace DevsTalk\Models;
 
- class User extends Model{
-
-
- }
+class User extends \Illuminate\Database\Eloquent\Model {
+}
