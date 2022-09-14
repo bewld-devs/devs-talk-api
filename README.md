@@ -76,7 +76,7 @@ For the POST end point to work, the following is needed
 | `id`       | `string` | The id of the user to be deleted                                                           |
 ## Database
 
-For now because we are in the intial stages of dev, i am using a sqlite db with has only table for now that is users & posts
+For now because we are in the intial stages of dev, i am using a [sqlite](https://www.sqlite.org/index.html) db with has only table for now that is users & posts
 
 
 ## Issues
