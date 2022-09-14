@@ -1,7 +1,7 @@
 # DevsTalk API
 
 
-## in contanst development
+## in development....
 
 
 ### To run you need 
