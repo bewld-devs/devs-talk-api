@@ -1,13 +1,13 @@
-# DevTalk API
+# DevsTalk API
 
 
-## Still in dev (Will reformat) very soon promise ;)
+## in contanst development
 
 
 ### To run you need 
  - PHPv7.0 +
  - Composer 
- - Enable sqlite extension in php.ini
+ - Enable sqlite extension in [php.ini](https://www.plus2net.com/php_tutorial/sqlite-support.php)
  - A web server, any will do or just use the built-in in php
 
  For non-php devs, i'd advise you to use [laragon](https://laragon.org/) as it comes pre-bundled with the above requirements
@@ -25,6 +25,7 @@ And vhalla! just visit `/` or any of the listed endpoints
 | API                         | Description                 |
 |-----------------------------|------------------------------------------------------------------------------------|
 | `GET /api/test` | Returns a demo web page that partialy consumes the API |
+| `GET /api/logs` | Returns a log page detailing all the logs of the application for debugging |
 
 ## Current GET Endpoints
 
