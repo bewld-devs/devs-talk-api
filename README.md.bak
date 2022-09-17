@@ -1,4 +1,4 @@
-# DevsTalk API
+# DevsTalk API Now in Laravel
 
 
 ## in development....
@@ -17,7 +17,7 @@
   - open terminal
   - `cd devs-talk-api`
   - `composer install`
-  - Run your server or built in `php -S localhost:8080`
+  - Run your server or built in `php artisan serve`
 
 And vhalla! just visit `/` or any of the listed endpoints 
 
