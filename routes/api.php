@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,3 +23,5 @@ Route::get('/', function () {
     return response('Good work, it works', 200)
     ->header('Content-Type', 'text/plain');
 });
+
+Route::apiResource('posts', PostController::class);
