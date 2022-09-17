@@ -19,12 +19,14 @@ class StorePostRequest extends FormRequest
     /**
      * Get the validation rules that apply to the request.
      *
-     * @return array<string, mixed>
+     * @return array
      */
     public function rules()
     {
         return [
-            //
+            "title" => "required|max:70",
+            "image" => "required",
+            "body" => "required"
         ];
     }
 }
